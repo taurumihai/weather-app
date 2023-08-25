@@ -84,6 +84,14 @@ public class WeatherRestController {
                     throw new SystemUnavailableException(new ErrorMessageResponse(SYSTEM_UNAVAILABLE));
                 }
 
+                /*
+                * Handling the case when among the city names list, we have an invalid city name,
+                * thus we delete everything we saved before and returning a proper message.
+                * Also, the CSV file is not generated. Using this approach to avoid having records in database, but no CSV file
+                * */
+                forecastService.deleteAll();
+                weatherCityService.deleteAll();
+
                 log.error("No city found!");
                 throw new CityNotFoundException(new ErrorMessageResponse(CITY_NOT_FOUND + cityString));
             }
@@ -100,6 +108,7 @@ public class WeatherRestController {
         }
 
         List<WeatherCityDto> finalWeatherList = weatherCityService.getRequestedCitiesWeatherInfo();
+
         log.debug("Sorting final result list...");
         Collections.sort(finalWeatherList);
 
