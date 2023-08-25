@@ -23,7 +23,7 @@
         "temperature": "19.34 ℃",
         "wind": "9.67 km/h"
     }
-]
+  ]
       
       
       This app calls https://goweather.herokuapp.com/weather/{cityName} API, where cityName is a name of any city. For example https://goweather.herokuapp.com/weather/Bucuresti returns the following input in JSON format:
