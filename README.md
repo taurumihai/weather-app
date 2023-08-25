@@ -6,6 +6,24 @@
 
 ** App functionality, how it works, and some additional information **
       The main controller create a local file on the system. By default, it is saved under C\\test\. This directory is created automatically. IF the location where file is saved needs to be changed, it can be done in CsvFileService.java, from package ro.yonder.weatherapp.Weather.App.Demo.domain.services line 20. Also name of the file can be changed accordingly. By default, name of the file is weather.csv . The app will generate a CSV file after a success call to weather API, and return a JSON to the end user, having the following output:
+
+      [
+    {
+        "name": "Arad",
+        "temperature": "22.00 ℃",
+        "wind": "11.00 km/h"
+    },
+    {
+        "name": "Bucuresti",
+        "temperature": "31.67 ℃",
+        "wind": "7.00 km/h"
+    },
+    {
+        "name": "Oradea",
+        "temperature": "19.34 ℃",
+        "wind": "9.67 km/h"
+    }
+]
       
       
       This app calls https://goweather.herokuapp.com/weather/{cityName} API, where cityName is a name of any city. For example https://goweather.herokuapp.com/weather/Bucuresti returns the following input in JSON format:
